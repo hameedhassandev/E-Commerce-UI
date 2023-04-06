@@ -1,0 +1,14 @@
+<div class="card shadow-sm">
+    <img class="card-img-top" src="./assets/images/products/{{product.pictureUrl}}" alt="prod_img">
+    <div class="card-body d-flex flex-column">
+      <a href="" class="text-decoration-none text-info">
+        <h6 class="text-uppercase">{{product.name}}</h6>
+      </a>
+      <span class="mb-2">{{product.price | currency:"EGP":"symbol"}}</span>
+      <div class="btn-group mt-auto">
+        <button class="btn btn-dark mr-2">Add To Cart</button>
+        <button class="btn btn-outline-secondary">View</button>
+      </div>
+    </div>
+</div>
+
