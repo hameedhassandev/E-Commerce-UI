@@ -2,20 +2,26 @@
     <div class="row">
         <section class="col-3">
             <h5 class="text-info ms-3">Sort By</h5>
-            <select class="form-control mb-3" >
-                <option>Name</option>
-                <option>Price from hight to low</option>
-                <option>Price from low to hight</option>
+            <select class="form-control mb-3" (change)="onSortSlected($event)">
+                <option *ngFor="let sort of sortList" [value]="sort.value">{{sort.name}}</option>
             </select>
           
             <h5 class="text-info ms-3">Brands</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" *ngFor="let brand of brands">{{brand.brandName}}</li>
+                <li class="list-group-item" 
+                *ngFor="let brand of brands"
+                [class.active]="brand.id === shopParams.brandId"
+                [value]="brand.id"
+                (click)="onBrandSelected(brand.id)">{{brand.brandName}}</li>
             </ul>
 
             <h5 class="text-info ms-3">Types</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" *ngFor="let pt of prodTypes">{{pt.typeName}}</li>
+                <li class="list-group-item" 
+                *ngFor="let pt of prodTypes"
+                [class.active]="pt.id === shopParams.typeId"
+                [value]="pt.id"
+                (click)="onTypeSelected(pt.id)">{{pt.typeName}}</li>
 
             </ul>
         </section>
@@ -23,7 +29,13 @@
         <section class="col-9">
             <div class="d-flex justify-content-between align-items-center pb-2">
                 <header>
-                    <span>Shawing <strong>10</strong> of <strong>20</strong> Result(s)</span>
+                    <span *ngIf="totalCount > 0">Shawing 
+                        <strong>
+                            {{(shopParams.pageNumber -1) *shopParams.pageSize +1}} - 
+                            {{shopParams.pageNumber * shopParams.pageSize > totalCount ? totalCount : shopParams.pageNumber * shopParams.pageSize }}
+                        </strong> of
+                         <strong>{{totalCount}}</strong> Result(s)</span>
+                         <span class="align-items-center text-danger" *ngIf="totalCount === 0">Sorry, we couldn't find any results ..</span>
                 </header>
                 <div class="d-flex mt-2">
                     <input class="form-control me-2" type="text" placeholder="Search...">
@@ -38,6 +50,22 @@
                 <app-product-item [product]="prod"></app-product-item>  
               </div>
             </div>
+            <!-- pagination -->
+            <div class="d-flex justify-content-between" *ngIf="totalCount > 0">
+                <pagination 
+                [boundaryLinks]="true" 
+                [totalItems]="totalCount"
+                [itemsPerPage]="shopParams.pageSize"
+                [maxSize]="10"
+                (pageChanged)="onPageChanges($event)"
+                previousText="&lsaquo;" 
+                nextText="&rsaquo;" 
+                firstText="&laquo;" 
+                lastText="&raquo;">
+        
+                </pagination>
+            </div>
         </section>
+  
     </div>
 </div>

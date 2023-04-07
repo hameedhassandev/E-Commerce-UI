@@ -10,4 +10,11 @@
 .card_zoom:hover {
     transform: scale(1.1);
     margin-bottom: 20px;
-  }
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #59a1a5;
+    border-color: #59a1a5;
+}
