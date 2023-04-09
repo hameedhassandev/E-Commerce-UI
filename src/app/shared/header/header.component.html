@@ -1,0 +1,9 @@
+<header *ngIf="totalCount && pageNumber && pageSize">
+    <span *ngIf="totalCount > 0">Shawing 
+        <strong>
+            {{(pageNumber -1) *pageSize +1}} - 
+            {{pageNumber * pageSize > totalCount ? totalCount : pageNumber * pageSize }}
+        </strong> of
+         <strong>{{totalCount}}</strong> Result(s)</span>
+         <span class="align-items-center text-danger" *ngIf="totalCount === 0">Sorry, we couldn't find any results ..</span>
+</header>

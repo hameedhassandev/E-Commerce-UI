@@ -8,7 +8,7 @@
           
             <h5 class="text-info ms-3">Brands</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" 
+                <li class="list-group-item click_me" 
                 *ngFor="let brand of brands"
                 [class.active]="brand.id === shopParams.brandId"
                 [value]="brand.id"
@@ -17,7 +17,7 @@
 
             <h5 class="text-info ms-3">Types</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" 
+                <li class="list-group-item click_me" 
                 *ngFor="let pt of prodTypes"
                 [class.active]="pt.id === shopParams.typeId"
                 [value]="pt.id"
@@ -28,23 +28,23 @@
         
         <section class="col-9">
             <div class="d-flex justify-content-between align-items-center pb-2">
-                <header>
-                    <span *ngIf="totalCount > 0">Shawing 
-                        <strong>
-                            {{(shopParams.pageNumber -1) *shopParams.pageSize +1}} - 
-                            {{shopParams.pageNumber * shopParams.pageSize > totalCount ? totalCount : shopParams.pageNumber * shopParams.pageSize }}
-                        </strong> of
-                         <strong>{{totalCount}}</strong> Result(s)</span>
-                         <span class="align-items-center text-danger" *ngIf="totalCount === 0">Sorry, we couldn't find any results ..</span>
-                </header>
+             
+                <!-- header -->
+                <app-header 
+                [totalCount]="totalCount"
+                [pageNumber]="shopParams.pageNumber"
+                [pageSize]="shopParams.pageSize"
+                ></app-header>
                 <div class="d-flex mt-2">
-                    <input class="form-control me-2" type="text" placeholder="Search...">
-                    <button class="btn btn-outline-info mx-2">Search</button>
-                    <button class="btn btn-outline-dark">Clear</button>
+                    <input (keyup.enter)="onSearch()" class="form-control me-2" #search type="text" placeholder="Search...">
+                    <button  (click)="onSearch()" class="btn btn-outline-info mx-2">Search</button>
+                    <button (click)="onClear()" class="btn btn-outline-dark">Clear</button>
                 </div>
             </div>
 
             <div class="row row-cols-3 g-3 mb-4">
+                <span class="text-danger" *ngIf="isEmptyProducts">No results found!</span>
+
                 <div class="col-4 mt-2 card_zoom" *ngFor="let prod of products">
                     <!-- cards -->
                 <app-product-item [product]="prod"></app-product-item>  
@@ -52,18 +52,11 @@
             </div>
             <!-- pagination -->
             <div class="d-flex justify-content-between" *ngIf="totalCount > 0">
-                <pagination 
-                [boundaryLinks]="true" 
-                [totalItems]="totalCount"
-                [itemsPerPage]="shopParams.pageSize"
-                [maxSize]="10"
-                (pageChanged)="onPageChanges($event)"
-                previousText="&lsaquo;" 
-                nextText="&rsaquo;" 
-                firstText="&laquo;" 
-                lastText="&raquo;">
-        
-                </pagination>
+              <app-pager 
+              [totalCount]="totalCount"
+              [pageSize]="shopParams.pageSize"
+              (pageChanged)="onPageChanges($event)"
+              ></app-pager>
             </div>
         </section>
   

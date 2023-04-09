@@ -3,18 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SectionHeaderComponent } from './section-header/section-header.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
   declarations: [
-    NavBarComponent
+    NavBarComponent,
+    SectionHeaderComponent
   ],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    NgxSpinnerModule,
+
   ],
   exports:[
-    NavBarComponent
+    NavBarComponent,
+    SectionHeaderComponent,
+    NgxSpinnerModule
   ]
 })
 export class CoreModule { }

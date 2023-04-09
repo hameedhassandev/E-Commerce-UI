@@ -21,6 +21,7 @@ export class ShopService {
     params = params.append("Sort", shopParams.sort);
     params = params.append("PageIndex", shopParams.pageNumber);
     params = params.append("PageSize", shopParams.pageSize);
+    if(shopParams.search)     params = params.append("Search", shopParams.search);
     console.log('params: ' + params)
 
     return this._http.get<Paging<Product[]>>(this.AppURL + "Product/GetAllProducts",{params:params});
@@ -33,5 +34,9 @@ export class ShopService {
 
   getProdTypes():Observable<ProdType[]>{
     return this._http.get<ProdType[]>(this.AppURL + "Product/ProductTypes");
+  }
+
+  getProduct(id:number):Observable<Product>{
+    return this._http.get<Product>(this.AppURL + "Product/GetProduct/"+ id);
   }
 }

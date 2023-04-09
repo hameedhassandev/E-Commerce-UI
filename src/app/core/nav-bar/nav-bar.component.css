@@ -13,3 +13,16 @@
 .image_logo{
     width: 50px;
 }
+
+nav a{
+    text-decoration: none;
+    color: black;    
+}
+nav a:active{
+    color: #59a1a5
+}
+
+
+.image_logo{
+    cursor: pointer;
+}

@@ -18,3 +18,7 @@
     background-color: #59a1a5;
     border-color: #59a1a5;
 }
+
+.click_me{
+    cursor: pointer;
+}
