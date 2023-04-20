@@ -9,9 +9,38 @@
 <div class="d-flex align-items-center">
  <a routerLink="/basket" class="position-relative">
     <i class="fa fa-shopping-cart fa-2x me-5 mr-5 text-dark"></i>
-    <div class="cart-no">5</div>
+    <div class="cart-no">
+       3
+    </div>
  </a>
- <a routerLink="" class="btn btn-outline-info mr-3">Login</a>
- <a routerLink="" class="btn btn-dark me-4">Sign Up</a>
+ 
+<ng-container *ngIf="(_accountService.currentUser$ | async) == null">
+   <a routerLink="/account/login" class="btn btn-outline-info mr-3">Login</a>
+   <a routerLink="/account/register" class="btn btn-dark me-4">Sign Up</a>
+</ng-container>
+<ng-container *ngIf="_accountService.currentUser$ | async as user">
+   <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
+   <a dropdownToggle class="dropdown-toggle">
+      <strong>Welcome, {{user.displayName}}</strong>
+   </a>
+   <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+      <li class="py-1">
+         <a routerLink="/basket" class="dropdown-item">
+            <i class="fa fa-shopping-cart mr-3"> My Cart</i>
+         </a>
+      </li>
+      <li class="py-1">
+         <a routerLink="/order" class="dropdown-item">
+            <i class="fa fa-history mr-3"> My Orders</i>
+         </a>
+      </li>
+      <li class="py-1">
+         <a (click)="_accountService.logOut()" class="dropdown-item">
+            <i class="mr-3"> Logout</i>
+         </a>
+      </li>
+   </ul>
+   </div>
+</ng-container>
 </div>
 </header>
