@@ -31,7 +31,7 @@ register(){
   fData.append('DisplayName',this.registerForm.get('displayName')?.value);
   if(this.registerForm.valid){
     this._accountService.register(fData).subscribe({
-      next:(res)=>{
+      next:(res)=>{ 
           console.log(res)
           this._router.navigate(['/shop']);
         },error: err=>{  

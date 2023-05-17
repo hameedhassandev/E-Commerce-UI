@@ -1,0 +1,59 @@
+<div class="mt-4" *ngIf="checkoutForm" [formGroup]="checkoutForm">
+    <!-- <p>{{checkoutForm.value | json}}</p> -->
+    <div class="col-8" formGroupName="addressForm">
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control"   placeholder="First Name" formControlName="firstName">
+                        <small class="text-danger" *ngIf="!checkoutForm.get('addressForm')?.get('firstName')?.valid && 
+                        checkoutForm.get('addressForm')?.get('firstName')?.touched">First Name is required. </small>  
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control"   placeholder="Last Name" formControlName="lastName">
+                        <small class="text-danger" *ngIf="!checkoutForm.get('addressForm')?.get('lastName')?.valid && 
+                        checkoutForm.get('addressForm')?.get('lastName')?.touched">Last Name is required. </small>  
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control"  placeholder="Street" formControlName="street">
+              <small class="text-danger" *ngIf="!checkoutForm.get('addressForm')?.get('street')?.valid && 
+              checkoutForm.get('addressForm')?.get('street')?.touched">Street is required. </small>  
+            </div>
+            <div class="form-group">
+                <label for="street">City</label>
+                <input type="text" class="form-control"  placeholder="City" formControlName="city">
+                <small class="text-danger" *ngIf="!checkoutForm.get('addressForm')?.get('city')?.valid && 
+                checkoutForm.get('addressForm')?.get('city')?.touched">City is required. </small>  
+            </div>
+    
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="street">State</label>
+                        <input type="text" class="form-control"  placeholder="State" formControlName="state">
+                        <small class="text-danger" *ngIf="!checkoutForm.get('addressForm')?.get('state')?.valid && 
+                        checkoutForm.get('addressForm')?.get('state')?.touched">State is required. </small>  
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="street">Zip Code</label>
+                        <input type="text" class="form-control"  placeholder="zip Code" formControlName="zipCode">
+                        <small class="text-danger" *ngIf="!checkoutForm.get('addressForm')?.get('zipCode')?.valid && 
+                        checkoutForm.get('addressForm')?.get('zipCode')?.touched">Zip Code is required. </small>  
+                    </div>
+                </div>
+            </div>
+ 
+           
+            <button cdkStepperNext class="btn btn-primary">Go to Delivery Method</button>
+    </div>
+
+</div>

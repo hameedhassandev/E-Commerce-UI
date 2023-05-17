@@ -1,0 +1,42 @@
+<div class="container mt-3">
+    <div class="col">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="text-uppercase">
+                    <tr>
+                        <th><div class="py-2">Product</div></th>
+                        <th><div class="py-2">Price</div></th>
+                        <th><div class="py-2">Qty</div></th>
+                        <th><div class="py-2">Total</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cart of allCart">
+                        <th>
+                            <div class="p-2 d-inline-block">
+                                <img src="./assets/images/products/{{cart.img}}" style="max-height: 60px;" class="img-fluid">
+                            </div>
+                            <div class="ms-3 d-inline-block align-middle">
+                                <h5 class="mb-0">
+                                   {{cart.name}}
+                                </h5>
+                                <span class="text-muted">
+                                    - {{cart.brand}}
+                                </span>
+                            </div>
+                        </th>
+                        <td class="align-middle"><strong>{{cart.price | currency:"EGP":"symbol"}}</strong></td>
+                        <td class="align-middle"><strong>{{cart.qty}}</strong></td>
+                        <td class="align-middle"><strong>{{cart.qty * cart.price | currency:"EGP":"symbol"}}</strong></td>
+                      
+                       
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button cdkStepperPrevious class="btn btn-danger mr-4">Back to Delivery Method</button>
+
+        <button cdkStepperNext class="btn btn-primary">Go to Payment</button>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+<div class="mt-4">
+    <div class="mt-4" *ngIf="checkoutForm" [formGroup]="checkoutForm">
+    <div class="row">
+        <div class="col-6 form-group" *ngFor="let delivery of deliveryMethod">
+             <input type="radio"
+             id="{{delivery.id}}"
+             value="{{delivery.id}}"
+             formControlName="deliveryMethod"
+             class="form-check-input">
+             <label for="{{delivery.id}}" class="form-check-label mb-3">
+                <strong>{{delivery.shortName}} - {{delivery.price| currency:"EGP":"symbol"}}</strong>
+                <br>
+                <span class="label-description">{{delivery.description}}</span>
+             </label>
+        </div>
+    </div>
+    <button cdkStepperPrevious class="btn btn-danger mr-4">Back to Address</button>
+
+    <button cdkStepperNext class="btn btn-primary">Go to Review Order</button>
+
+
+</div>

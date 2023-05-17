@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Paging } from './shared/Models/Paging';
-import { Product } from './shared/Models/Product';
 import { BasketService } from './basket/basket.service';
 import { AccountService } from './account/account.service';
 

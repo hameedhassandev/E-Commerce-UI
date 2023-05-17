@@ -1,3 +1,43 @@
 <div class="container">
-    <h1>Test Checkout</h1>
+    <div class="row">
+        <div class="col-8">
+            <app-stepper [linearModuleSelected]="false">
+                <cdk-step [label]="'Address'">
+                   <app-checkout-address [checkoutForm]="checkOutForm"></app-checkout-address>
+                </cdk-step>
+                <cdk-step [label]="'Delivery'">
+                    <app-checkout-delivery [checkoutForm]="checkOutForm"></app-checkout-delivery>
+                </cdk-step>
+                <cdk-step [label]="'Review'">
+                     <app-checkout-review></app-checkout-review>
+                </cdk-step>
+                <cdk-step [label]="'Payments'">
+                    <app-checkout-payment></app-checkout-payment>
+                </cdk-step>
+            </app-stepper>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Summary Order</h3>
+                    <table class="table">
+                       <tr>
+                            <th>Subtotal</th>
+                            <td>{{totalCrt | currency:"EGP":"symbol"}}</td>
+                       </tr>
+                        <tr>
+                            <th>Tax</th>
+                            <td>{{0 | currency:"EGP":"symbol"}}</td>
+                        </tr>
+                        <tr class="mb-4">
+                            <th><h5>Order Total</h5></th>
+                            <td><h5>{{totalCrt | currency:"EGP":"symbol"}}</h5></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
