@@ -29,4 +29,7 @@ export class CheckoutDeliveryComponent implements OnInit {
     // })
   }
 
+  setShippingCost(deliveryMethod:DeliveryMethod){
+    deliveryMethod.price;
+  }
 }

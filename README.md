@@ -14,3 +14,9 @@ Backend repo (.NET Core Web API) : https://github.com/hameedhassandev/E-Commerce
 
 ![login](https://user-images.githubusercontent.com/57669085/233372032-ec10469a-6b61-4683-9802-c75fd0f1a17b.PNG)
 ![register](https://user-images.githubusercontent.com/57669085/233372045-67f07a8b-066c-4aec-a89c-468a7909eff5.PNG)
+
+![order1](https://github.com/hameedhassandev/E-Commerce-UI/assets/57669085/cb6e1fbf-b3d9-42c1-9231-5a75249bcf6b)
+![order2](https://github.com/hameedhassandev/E-Commerce-UI/assets/57669085/993ca310-79a4-4fed-a15e-611cbdd4f3f7)
+![order3](https://github.com/hameedhassandev/E-Commerce-UI/assets/57669085/f3c3362e-cdb6-49d5-9b35-14055c223761)
+![order4](https://github.com/hameedhassandev/E-Commerce-UI/assets/57669085/8c6e710d-1591-4e69-80e9-305f6838ce9f)
+![success](https://github.com/hameedhassandev/E-Commerce-UI/assets/57669085/8621bcda-402f-4961-b636-f61f28c50491)

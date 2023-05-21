@@ -9,6 +9,7 @@ const routes: Routes = [
   {path:'basket',loadChildren:()=>import('./basket/basket.module').then(m=>m.BasketModule)},
   {path:'check-out',/*canActivate:[AuthGuard],*/loadChildren:()=>import('./check-out/check-out.module').then(m=>m.CheckOutModule)},
   {path:'account',loadChildren:()=>import('./account/account.module').then(m=>m.AccountModule)},
+  {path:'order',loadChildren:()=>import('./order/order.module').then(m=>m.OrderModule)},
   {path:'**',redirectTo:'',pathMatch:'full'},
 ];
 

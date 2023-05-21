@@ -1,7 +1,6 @@
 <div class="mt-4" *ngIf="checkoutForm" [formGroup]="checkoutForm">
     <!-- <p>{{checkoutForm.value | json}}</p> -->
     <div class="col-8" formGroupName="addressForm">
-
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -52,8 +51,10 @@
                 </div>
             </div>
  
-           
+            <button class="btn btn-secondary mr-4" (click)="saveUserAddress()">Save As Address</button>
+
             <button cdkStepperNext class="btn btn-primary">Go to Delivery Method</button>
+            
     </div>
 
 </div>

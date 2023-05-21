@@ -1,0 +1,24 @@
+<div class="container" style="margin-top: 110px;">
+<div class="row">
+    <div class="col-12">
+        <table class="table table-hover" style="cursor: pointer; text-align: center;">
+            <thead  class="thead-light">
+                <tr>
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Toal</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of Orders" routerLink="/order/{{order.id}}">
+                    <th  scope="row">#{{order.id}}</th>
+                    <td>{{order.date}}</td>
+                    <td>{{order.total | currency:"EGP":"symbol"}}</td>
+                    <td>{{order.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

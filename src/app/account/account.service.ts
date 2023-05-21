@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, map, of } from 'rxjs';
-import { User } from '../shared/Models/User';
+import { Address, User } from '../shared/Models/User';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -62,4 +62,14 @@ export class AccountService {
     );
 
   }
+
+
+  getUserAddress(){
+    return this._http.get<Address>(this.AppURL + 'Account/GetCurrentAddress');
+  }
+
+  updateUserAddress(data:Address){
+    return this._http.put(this.AppURL + 'Account/UpdateAddress',data);
+  }
+
 }

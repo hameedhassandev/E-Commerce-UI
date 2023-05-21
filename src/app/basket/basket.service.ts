@@ -69,11 +69,6 @@ export class BasketService {
     }
 
   }
-  updateBasket(){
 
-  }
 
-  deleteBasket(){
-
-  }
 }

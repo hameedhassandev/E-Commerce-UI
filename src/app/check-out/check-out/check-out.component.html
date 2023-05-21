@@ -27,11 +27,11 @@
                        </tr>
                         <tr>
                             <th>Tax</th>
-                            <td>{{0 | currency:"EGP":"symbol"}}</td>
+                            <td>{{taxCost | currency:"EGP":"symbol"}}</td>
                         </tr>
                         <tr class="mb-4">
                             <th><h5>Order Total</h5></th>
-                            <td><h5>{{totalCrt | currency:"EGP":"symbol"}}</h5></td>
+                            <td><h5>{{totalCrt + taxCost | currency:"EGP":"symbol"}}</h5></td>
                         </tr>
                     </table>
 

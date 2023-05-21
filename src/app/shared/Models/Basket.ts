@@ -11,7 +11,9 @@ export interface BasketItem{
 
 export interface Basket{
     id:string,
-    baskeItems:BasketItem[];
+    baskeItems:BasketItem[],
+    clientSecret?:string,
+    paymentMethodId?:string
 }
 
 export class Basket implements Basket{

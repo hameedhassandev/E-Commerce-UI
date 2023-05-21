@@ -1,12 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AccountService } from 'src/app/account/account.service';
+import { DeliveryMethod } from 'src/app/shared/Models/DeliveryMethod';
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.css']
 })
 export class CheckOutComponent implements OnInit{
-  totalCrt:any
+  @Input() taxCost:number = 0;
+  private _totalCrt: any;
+  public get totalCrt(): any {
+    return this._totalCrt;
+  }
+  public set totalCrt(value: any) {
+    this._totalCrt = value;
+  }
   allOrder = [
     {id:1, name:"White T-Shirt", brand:"GUCCI", price:250,qty:2, img:"s2.png"},
     {id:2, name:"T-Shirt Over-size", brand:"GUCCI", price:320,qty:1, img:"s1.png"},
@@ -14,12 +23,12 @@ export class CheckOutComponent implements OnInit{
   
   ]
 
-constructor(private _fb:FormBuilder) {
+constructor(private _fb:FormBuilder,private _accountServices:AccountService) {
 }
 
 checkOutForm = this._fb.group({
   addressForm:this._fb.group({
-    firstName:['',Validators.required],
+    firstName:['',Validators.required], 
     lastName:['',Validators.required],
     street:['',Validators.required],
     city:['',Validators.required],
@@ -38,6 +47,15 @@ checkOutForm = this._fb.group({
     this.calcTotal();
   }
 
+
+  getAddressFormValues(){
+    this._accountServices.getUserAddress().subscribe({
+      next:address=>{
+        address && this.checkOutForm.get('addressForm')?.patchValue(address);
+      }
+    })
+  }
+
   calcTotal(){
    let total = 0;
    for(let item of this.allOrder){
@@ -45,6 +63,7 @@ checkOutForm = this._fb.group({
    }
    this.totalCrt = total;
   }
+
 
 
 }

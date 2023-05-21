@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DeliveryMethod } from '../shared/Models/DeliveryMethod';
 import { map } from 'rxjs';
+import { Basket } from '../shared/Models/Basket';
+import { Order } from '../shared/Models/Order';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +23,23 @@ export class CheckOutService {
       })
     );
    }
+
+
+   
+  calcTotal(totalInCart:any){
+    let total = 0;
+    for(let item of totalInCart){
+      total +=  item.price * item.qty;
+    }
+    return totalInCart = total;
+   }
+ 
+ setShippingCost(deliveryMethod:DeliveryMethod){
+   return  deliveryMethod.price;
+   
+ }
+
+ CreateService(order:any){
+
+ }
 }
